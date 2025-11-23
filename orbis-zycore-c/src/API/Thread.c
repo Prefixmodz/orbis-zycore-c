@@ -108,10 +108,7 @@ ZyanStatus ZyanThreadGetCurrentThread(ZyanThread* thread)
 ZYAN_STATIC_ASSERT(sizeof(ZyanThreadId) <= sizeof(ZyanU64));
 ZyanStatus ZyanThreadGetCurrentThreadId(ZyanThreadId* thread_id)
 {
-    // TODO: Use `pthread_getthreadid_np` on platforms where it is available
-
-    pthread_t ptid = pthread_self();
-    *thread_id = *(ZyanThreadId*)ptid;
+    *thread_id = pthread_getthreadid_np();
 
     return ZYAN_STATUS_SUCCESS;
 }

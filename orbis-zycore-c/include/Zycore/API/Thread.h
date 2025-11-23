@@ -47,6 +47,7 @@ extern "C" {
 
 #if   defined(ZYAN_POSIX)
 
+#include <KernelExt.h>
 #include <pthread.h>
 
 /* ---------------------------------------------------------------------------------------------- */
