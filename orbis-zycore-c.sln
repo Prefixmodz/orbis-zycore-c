@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "orbis-zycore-c", "orbis-zycore-c\orbis-zycore-c.vcxproj", "{BB29E190-5EFB-44B8-B762-F729A080BA01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ORBIS = Debug|ORBIS
+		Release|ORBIS = Release|ORBIS
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB29E190-5EFB-44B8-B762-F729A080BA01}.Debug|ORBIS.ActiveCfg = Debug|ORBIS
+		{BB29E190-5EFB-44B8-B762-F729A080BA01}.Debug|ORBIS.Build.0 = Debug|ORBIS
+		{BB29E190-5EFB-44B8-B762-F729A080BA01}.Release|ORBIS.ActiveCfg = Release|ORBIS
+		{BB29E190-5EFB-44B8-B762-F729A080BA01}.Release|ORBIS.Build.0 = Release|ORBIS
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2F4C7E7-3049-478D-9F81-D89DA290850E}
+	EndGlobalSection
+EndGlobal
