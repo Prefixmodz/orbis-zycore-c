@@ -80,7 +80,9 @@ CTestTestfile.cmake
 # MacOS
 .DS_Store
 
-build*
+Build
+ORBIS_Debug
+ORBIS_Release
 
 # MSVC
 .vs
@@ -98,4 +100,3 @@ doc/html
 /.vscode
 /.idea
 /cmake-build-*
-/ORBIS_Debug
