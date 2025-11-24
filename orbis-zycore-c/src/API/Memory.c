@@ -55,7 +55,7 @@ ZyanU32 ZyanMemoryGetSystemPageSize(void)
 
 #elif defined(ZYAN_POSIX)
 
-    return sysconf(_SC_PAGE_SIZE);
+    return (1 << 14);
 
 #endif
 }
@@ -71,7 +71,7 @@ ZyanU32 ZyanMemoryGetSystemAllocationGranularity(void)
 
 #elif defined(ZYAN_POSIX)
 
-    return sysconf(_SC_PAGE_SIZE);
+    return 0x10000;
 
 #endif
 }

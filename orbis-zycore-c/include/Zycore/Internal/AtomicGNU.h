@@ -34,6 +34,8 @@ extern "C" {
 #include <Zycore/Defines.h>
 #include <Zycore/Types.h>
 
+#include <sce_atomic.h>
+
 /* ============================================================================================== */
 /* Functions                                                                                      */
 /* ============================================================================================== */
@@ -47,19 +49,17 @@ extern "C" {
 ZYAN_INLINE ZyanUPointer ZyanAtomicCompareExchange(ZyanAtomicPointer* destination,
     ZyanUPointer comparand, ZyanUPointer value)
 {
-    return (ZyanUPointer)(__sync_val_compare_and_swap(
-        &destination->value, (void*)comparand, (void*)value, &destination->value));
+    return (ZyanUPointer)(sceAtomicCompareAndSwap128((volatile __int128_t*)&destination->value, comparand, value));
 }
 
 ZYAN_INLINE ZyanUPointer ZyanAtomicIncrement(ZyanAtomicPointer* destination)
 {
-    return (ZyanUPointer)(__sync_fetch_and_add(&destination->value, (void*)1,
-        &destination->value)) + 1;
+    return (ZyanUPointer)(sceAtomicIncrement128((volatile __int128_t*)&destination->value)) + 1;
 }
 
 ZYAN_INLINE ZyanUPointer ZyanAtomicDecrement(ZyanAtomicPointer* destination)
 {
-    return (ZyanUPointer)(__sync_sub_and_fetch(&destination->value, (void*)1, &destination->value));
+    return (ZyanUPointer)(sceAtomicDecrement128((volatile __int128_t*)&destination->value));
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -69,18 +69,17 @@ ZYAN_INLINE ZyanUPointer ZyanAtomicDecrement(ZyanAtomicPointer* destination)
 ZYAN_INLINE ZyanU32 ZyanAtomicCompareExchange32(ZyanAtomic32* destination,
     ZyanU32 comparand, ZyanU32 value)
 {
-    return (ZyanU32)(__sync_val_compare_and_swap(&destination->value, comparand, value, 
-        &destination->value));
+    return (ZyanU32)(sceAtomicCompareAndSwap32((volatile __int32_t *)&destination->value, comparand, value));
 }
 
 ZYAN_INLINE ZyanU32 ZyanAtomicIncrement32(ZyanAtomic32* destination)
 {
-    return (ZyanU32)(__sync_fetch_and_add(&destination->value, 1, &destination->value)) + 1;
+    return (ZyanU32)(sceAtomicIncrement32((volatile __int32_t*)&destination->value)) + 1;
 }
 
 ZYAN_INLINE ZyanU32 ZyanAtomicDecrement32(ZyanAtomic32* destination)
 {
-    return (ZyanU32)(__sync_sub_and_fetch(&destination->value, 1, &destination->value));
+    return (ZyanU32)(sceAtomicDecrement32((volatile __int32_t*)&destination->value));
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -90,18 +89,17 @@ ZYAN_INLINE ZyanU32 ZyanAtomicDecrement32(ZyanAtomic32* destination)
 ZYAN_INLINE ZyanU64 ZyanAtomicCompareExchange64(ZyanAtomic64* destination,
     ZyanU64 comparand, ZyanU64 value)
 {
-    return (ZyanU64)(__sync_val_compare_and_swap(&destination->value, comparand, value, 
-        &destination->value));
+    return (ZyanU64)(sceAtomicCompareAndSwap64((volatile __int64_t*)&destination->value, comparand, value));
 }
 
 ZYAN_INLINE ZyanU64 ZyanAtomicIncrement64(ZyanAtomic64* destination)
 {
-    return (ZyanU64)(__sync_fetch_and_add(&destination->value, 1, &destination->value)) + 1;
+    return (ZyanU64)(sceAtomicIncrement64((volatile __int64_t*)&destination->value)) + 1;
 }
 
 ZYAN_INLINE ZyanU64 ZyanAtomicDecrement64(ZyanAtomic64* destination)
 {
-    return (ZyanU64)(__sync_sub_and_fetch(&destination->value, 1, &destination->value));
+    return (ZyanU64)(sceAtomicDecrement64((volatile __int64_t*)&destination->value));
 }
 
 /* ---------------------------------------------------------------------------------------------- */
