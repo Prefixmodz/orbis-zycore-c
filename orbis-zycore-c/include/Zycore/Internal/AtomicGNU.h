@@ -49,17 +49,17 @@ extern "C" {
 ZYAN_INLINE ZyanUPointer ZyanAtomicCompareExchange(ZyanAtomicPointer* destination,
     ZyanUPointer comparand, ZyanUPointer value)
 {
-    return (ZyanUPointer)(sceAtomicCompareAndSwap128((volatile __int128_t*)&destination->value, comparand, value));
+    return (ZyanUPointer)ZyanAtomicCompareExchange64((ZyanAtomic64*)destination, comparand, value);
 }
 
 ZYAN_INLINE ZyanUPointer ZyanAtomicIncrement(ZyanAtomicPointer* destination)
 {
-    return (ZyanUPointer)(sceAtomicIncrement128((volatile __int128_t*)&destination->value)) + 1;
+    return (ZyanUPointer)ZyanAtomicIncrement64((ZyanAtomic64*)destination);
 }
 
 ZYAN_INLINE ZyanUPointer ZyanAtomicDecrement(ZyanAtomicPointer* destination)
 {
-    return (ZyanUPointer)(sceAtomicDecrement128((volatile __int128_t*)&destination->value));
+    return (ZyanUPointer)ZyanAtomicDecrement64((ZyanAtomic64*)destination);
 }
 
 /* ---------------------------------------------------------------------------------------------- */
