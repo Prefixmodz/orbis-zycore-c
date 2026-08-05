@@ -46,10 +46,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
-    <OutDir>$(SolutionDir)Build\</OutDir>
+    <OutDir>$(SolutionDir)$(Platform)_$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
-    <OutDir>$(SolutionDir)Build\</OutDir>
+    <OutDir>$(SolutionDir)$(Platform)_$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
     <ClCompile>
@@ -60,6 +60,7 @@
       <CLanguageStd>C11</CLanguageStd>
       <ExtendedDiagnostics>true</ExtendedDiagnostics>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\StubMaker\include\;$(ProjectDir)include\</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <Addressing>NonAslr</Addressing>
@@ -73,6 +74,8 @@
       <CppLanguageStd>Cpp17</CppLanguageStd>
       <CLanguageStd>C11</CLanguageStd>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\StubMaker\include\;$(ProjectDir)include\</AdditionalIncludeDirectories>
+      <ExtendedDiagnostics>true</ExtendedDiagnostics>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
